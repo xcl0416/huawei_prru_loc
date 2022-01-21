@@ -6,11 +6,11 @@ from tqdm import tqdm
 params = {'anchor_num': 2,               # BS的总个数
           'agent_num': 3,                # UE的总个数
           'known_anchor_num': 2,         # 位置已知的BS的个数
-          'dis_com': 3,                 # 通信距离
-          'scn_len': 20,                 # 场景大小
-          'station_dis_max': 4,         # 最大站间距
-          'station_dis_min': 2,          # 最小站间距
-          'grid_size': 1
+          'dis_com': 20,                 # 通信距离
+          'scn_len': 50,                 # 场景大小
+          'station_dis_max': 20,         # 最大站间距
+          'station_dis_min': 10,          # 最小站间距
+          'grid_size': 5
           }
 
 # anchor = np.random.uniform(0, params['scn_len'], (params['anchor_num'], 2 * 1))
@@ -25,7 +25,7 @@ params = {'anchor_num': 2,               # BS的总个数
 #             list_tmp.append(np.linalg.norm(anchor[j] - anchor[i]))
 #         if [d <= params['dis_com'] * 2 for d in list_tmp].count(True) == 0:
 #             break
-anchor = np.array([[5, 3], [8, 5]])
+anchor = np.array([[5, 10], [23, 17]])
 
 agent = np.random.uniform(0, params['scn_len'], (params['agent_num'], 2 * 1))
 # num_ = 0
@@ -213,7 +213,7 @@ for i in tqdm(range(UE1_set.shape[0])):
                 UE2_best3 = UE2_est
                 UE3_best3 = UE3_est
 
-anchor = np.array([[10, 9], [8, 6]])
+anchor = np.array([[40, 42], [23, 17]])
 
 # agent = np.array([[48, 44], [30, 26], [36, 32]])
 agent = np.random.uniform(0, params['scn_len'], (params['agent_num'], 2 * 1))

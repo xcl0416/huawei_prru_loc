@@ -10,7 +10,7 @@ params = {'anchor_num': 2,               # BS的总个数
           'scn_len': 20,                 # 场景大小
           'station_dis_max': 4,         # 最大站间距
           'station_dis_min': 2,          # 最小站间距
-          'grid_num': 1
+          'grid_size': 1
           }
 
 # anchor = np.random.uniform(0, params['scn_len'], (params['anchor_num'], 2 * 1))
@@ -72,8 +72,8 @@ UE_num = 3
 # signal = 0
 sum_err_check_min = 100000
 var_sum = 10000000
-for UE1_x in range(anchor[0, 0] - params['dis_com'], anchor[0, 0] + params['dis_com'], params['grid_num']):
-    for UE1_y in range(anchor[0, 1] - params['dis_com'], anchor[0, 1] + params['dis_com'], 1):
+for UE1_x in range(anchor[0, 0] - params['dis_com'], anchor[0, 0] + params['dis_com'], params['grid_size']):
+    for UE1_y in range(anchor[0, 1] - params['dis_com'], anchor[0, 1] + params['dis_com'], params['grid_size']):
         if (UE1_x - anchor[0, 0]) ** 2 + (UE1_y - anchor[0, 1]) ** 2 <= params['dis_com'] ** 2 and 0 <= UE1_x <= params['scn_len'] and 0 <= UE1_y <= params['scn_len']:
 
             UE_est = np.array([UE1_x, UE1_y])
@@ -99,9 +99,9 @@ for i in tqdm(range(UE1_set.shape[0])):
             UE1_est = UE1_set[i]
             UE2_est = UE2_set[j]
             UE3_est = UE3_set[k]
-            UE1_est = agent[0]
-            UE2_est = agent[1]
-            UE3_est = agent[2]
+            # UE1_est = agent[0]
+            # UE2_est = agent[1]
+            # UE3_est = agent[2]
 
             R1_2 = np.linalg.norm(anchor[0] - UE1_est) \
                    - (np.linalg.norm(anchor[0] - agent[0]) - np.linalg.norm(anchor[1] - agent[0]))
@@ -229,8 +229,8 @@ UE1_set = np.zeros((0, 2))
 UE2_set = np.zeros((0, 2))
 UE3_set = np.zeros((0, 2))
 sum_err_check = 100000
-for UE1_x in range(anchor[0, 0] - params['dis_com'], anchor[0, 0] + params['dis_com'], 1):
-    for UE1_y in range(anchor[0, 1] - params['dis_com'], anchor[0, 1] + params['dis_com'], 1):
+for UE1_x in range(anchor[0, 0] - params['dis_com'], anchor[0, 0] + params['dis_com'], params['grid_size']):
+    for UE1_y in range(anchor[0, 1] - params['dis_com'], anchor[0, 1] + params['dis_com'], params['grid_size']):
         if (UE1_x - anchor[0, 0]) ** 2 + (UE1_y - anchor[0, 1]) ** 2 <= params['dis_com'] ** 2 and 0 <= UE1_x <= params['scn_len'] and 0 <= UE1_y <= params['scn_len']:
 
             UE_est = np.array([UE1_x, UE1_y])

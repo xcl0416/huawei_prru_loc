@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import heapq
 import math
-from environment import *
 import random
 import copy
 
